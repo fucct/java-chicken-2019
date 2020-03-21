@@ -1,24 +1,38 @@
 package domain;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Order {
 	public static final int MAX_MENU_COUNT = 99;
+	public static final int INIT = 0;
 
-	private final Menu menu;
-	private final int menuCount;
+	private final Map<Menu, Integer> order = new HashMap<>();
 
-	public Order(Menu menu, int menuCount) {
-		validateMenuCount(menuCount);
-		this.menu = menu;
-		this.menuCount = menuCount;
-	}
-
-	private void validateMenuCount(int menuCount) {
-		if (menuCount > MAX_MENU_COUNT) {
-			throw new IllegalArgumentException("한 메뉴는 99개 까지만 주문하실 수 있습니다.");
+	public Order() {
+		for (Menu menu : Menus.getMenus()) {
+			order.put(menu, INIT);
 		}
 	}
 
-	public int calculateOrderPrice() {
-		return this.menu.getPrice() * menuCount;
+	public void add(Menu menu, int count) {
+		validateCount(menu, count);
+		order.put(menu, count);
+	}
+
+	private void validateCount(Menu menu, int count) {
+		if (order.get(menu) + count > MAX_MENU_COUNT)
+			throw new IllegalArgumentException("하나의 메뉴는 99개만 주문할 수 있습니다.");
+	}
+
+	public Map<Menu, Integer> getOrder() {
+		return Collections.unmodifiableMap(order);
+	}
+
+	public int calculatePrice() {
+		return order.entrySet().stream()
+			.mapToInt(items -> items.getKey().getPrice() * items.getValue())
+			.sum();
 	}
 }
