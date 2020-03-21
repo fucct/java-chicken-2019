@@ -16,4 +16,8 @@ public class Menu {
 	public boolean isSameId(String menuId) {
 		return this.id.equals(MenuId.of(menuId));
 	}
+
+	public int getPrice() {
+		return price;
+	}
 }
