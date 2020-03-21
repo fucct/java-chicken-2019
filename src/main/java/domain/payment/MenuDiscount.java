@@ -1,4 +1,6 @@
-package domain;
+package domain.payment;
+
+import domain.Order;
 
 public class MenuDiscount implements DiscountPolicy {
 	private static final int DISCOUNT_PRICE = 10000;

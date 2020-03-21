@@ -26,7 +26,7 @@ public class InputView {
 	}
 
 	public static int inputPaymentType() {
-		System.out.println("##신용카드는 1번, 현금은 2번");
+		System.out.println("##신용카드는 1번, 현금은 2번, 카카오 페이나 네이버 페이, 페이코를 이용하시면 3번을 입력해주세요.");
 		return Integer.parseInt(sc.nextLine());
 	}
 }

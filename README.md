@@ -27,4 +27,10 @@
 
 - [x] TableId
 - [x] MenuId
-- [] 조립
+- [x] 조립
+
+### 추가 구현 사항
+
+- [x] PaymentType 종류 추가(Naver, Payco, Kakao Pay) : 10%
+- [] 치킨을 3마리 이상 시킨 경우 음료 50% 할인
+- [] test 추가(가격에 대해서)

@@ -2,12 +2,12 @@ package controller;
 
 import domain.Function;
 import domain.Menu;
-import domain.MenuDiscount;
 import domain.MenuRepository;
-import domain.Payment;
-import domain.PaymentType;
 import domain.Table;
 import domain.TableRepository;
+import domain.payment.MenuDiscount;
+import domain.payment.Payment;
+import domain.payment.PaymentType;
 import view.InputView;
 import view.OutputView;
 

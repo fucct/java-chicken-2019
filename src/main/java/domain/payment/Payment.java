@@ -1,4 +1,6 @@
-package domain;
+package domain.payment;
+
+import domain.Order;
 
 public class Payment {
 	private final Order order;
