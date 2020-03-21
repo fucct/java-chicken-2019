@@ -20,4 +20,13 @@ public class Menu {
 	public int getPrice() {
 		return price;
 	}
+
+	public boolean isChicken() {
+		return this.menuType.isChicken();
+	}
+
+	@Override
+	public String toString() {
+		return "[" + menuType + "] " + id + " - " + name + " : " + price + "원";
+	}
 }

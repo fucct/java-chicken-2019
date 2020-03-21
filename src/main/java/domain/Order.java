@@ -35,4 +35,12 @@ public class Order {
 			.mapToInt(items -> items.getKey().getPrice() * items.getValue())
 			.sum();
 	}
+
+	public int getChickenCount() {
+		return order.entrySet().stream()
+			.map(Map.Entry::getKey)
+			.filter(Menu::isChicken)
+			.mapToInt(order::get)
+			.sum();
+	}
 }

@@ -16,4 +16,9 @@ public class Table {
 	public void add(Menu menu, int count) {
 		order.add(menu, count);
 	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(id);
+	}
 }
