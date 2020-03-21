@@ -48,4 +48,11 @@ public class Order {
 			.mapToInt(order::get)
 			.sum();
 	}
+
+	public int getBeveragesPrice() {
+		return order.entrySet().stream()
+			.filter(entry -> !entry.getKey().isChicken())
+			.mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
+			.sum();
+	}
 }
