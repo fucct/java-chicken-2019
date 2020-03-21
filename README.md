@@ -18,9 +18,13 @@
 
 ### TDD 방식
 
-- [ ] MenuType & Category
-- [ ] Menu
-- [ ] Menus
-- [ ] Order
-- [ ] Table
-- [ ] Tables
+- [x] MenuType & Category
+- [x] Menu
+- [x] MenuRepository
+- [x] Order
+- [x] Table
+- [x] TableRepository
+
+- [x] TableId
+- [x] MenuId
+- [] 조립
