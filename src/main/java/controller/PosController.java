@@ -2,7 +2,10 @@ package controller;
 
 import domain.Function;
 import domain.Menu;
+import domain.MenuDiscount;
 import domain.MenuRepository;
+import domain.Payment;
+import domain.PaymentType;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -42,6 +45,13 @@ public class PosController {
 	}
 
 	private void payment() {
+		Table table = TableRepository.findById(InputView.inputTableId());
+		OutputView.printOrder(table.getOrder().getOrder());
+		OutputView.printPayment(table);
+		PaymentType paymentType = PaymentType.of(InputView.inputPaymentType());
+		Payment payment = new Payment(table.getOrder(), new MenuDiscount(), paymentType);
+		OutputView.printTotalMoney(payment.calculate());
 
+		table.init();
 	}
 }

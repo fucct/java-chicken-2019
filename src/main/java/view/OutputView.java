@@ -1,6 +1,7 @@
 package view;
 
 import java.util.List;
+import java.util.Map;
 
 import domain.Menu;
 import domain.Table;
@@ -35,7 +36,7 @@ public class OutputView {
 	}
 
 	public static void showFunctions() {
-		System.out.println("##메인화면\n 1 - 주문등록 \n 2 - 결제하기 \n 프로그램 종료");
+		System.out.println("##메인화면\n 1 - 주문등록 \n 2 - 결제하기 \n 3 - 프로그램 종료");
 	}
 
 	public static void printMenus(List<Menu> menus) {
@@ -44,6 +45,25 @@ public class OutputView {
 	}
 
 	public static void printSuccess() {
-		System.out.println("\n 등록이 완료되었습니다. 맛있게 드시길");
+		System.out.println("\n등록이 완료되었습니다. 맛있게 드시길");
+	}
+
+	public static void printOrder(Map<Menu, Integer> order) {
+		System.out.println("## 주문 내역");
+		System.out.printf("%10s %10s %10s", "메뉴", "수량", "금액\n");
+		order.entrySet()
+			.stream()
+			.filter(entry -> entry.getValue() != 0)
+			.forEach(item -> System.out.printf("%10s %10s %10s\n",
+				item.getKey().getName(), item.getValue(), item.getKey().getPrice()));
+	}
+
+	public static void printPayment(Table table) {
+		System.out.printf("\n## %s번 테이블의 결제를 진행합니다.\n", table.getId());
+	}
+
+	public static void printTotalMoney(int totalMoney) {
+		System.out.println("\n##최종 결제 금액은");
+		System.out.println(totalMoney + "입니다 \n");
 	}
 }

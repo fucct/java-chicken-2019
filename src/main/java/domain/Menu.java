@@ -25,6 +25,10 @@ public class Menu {
 		return this.menuType.isChicken();
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	@Override
 	public String toString() {
 		return "[" + menuType + "] " + id + " - " + name + " : " + price + "원";

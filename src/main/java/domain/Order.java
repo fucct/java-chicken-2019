@@ -16,6 +16,11 @@ public class Order {
 		}
 	}
 
+	public void initOrder() {
+		order.keySet().stream()
+			.forEach(key -> order.put(key, 0));
+	}
+
 	public void add(Menu menu, int count) {
 		validateCount(menu, count);
 		order.put(menu, count);

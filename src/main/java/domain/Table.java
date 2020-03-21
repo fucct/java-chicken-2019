@@ -21,4 +21,16 @@ public class Table {
 	public String toString() {
 		return String.valueOf(id);
 	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public TableId getId() {
+		return id;
+	}
+
+	public void init() {
+		order.initOrder();
+	}
 }
