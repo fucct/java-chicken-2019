@@ -55,4 +55,8 @@ public class Order {
 			.mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
 			.sum();
 	}
+
+	public boolean isNotOrdered() {
+		return calculatePrice() == 0;
+	}
 }

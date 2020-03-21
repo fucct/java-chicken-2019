@@ -3,11 +3,15 @@ package domain.payment;
 import domain.Order;
 
 public class BeverageDiscount implements DiscountPolicy {
+	private static final double DISCOUNT_RATE = 0.5;
+	private static final int DISCOUNT_DELIMITER = 3;
+	private static final int BASIC_DISCOUNT_RATE = 1;
+
 	@Override
 	public int calculate(Order order) {
-		if (order.getChickenCount() >= 3) {
-			return (int)(order.getBeveragesPrice() * 0.5);
+		if (order.getChickenCount() >= DISCOUNT_DELIMITER) {
+			return (int)(order.getBeveragesPrice() * DISCOUNT_RATE);
 		}
-		return 1;
+		return BASIC_DISCOUNT_RATE;
 	}
 }

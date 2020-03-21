@@ -11,6 +11,7 @@ public class OutputView {
 	private static final String TOP_LINE = "┌ ─ ┐";
 	private static final String TABLE_FORMAT = "| %s |";
 	private static final String BOTTOM_LINE = "└ ─ ┘";
+	private static final String BOTTOM_LINE_WITH_ORDER = "└ ₩ ┘";
 
 	public static void showTables() {
 		List<Table> tables = TableRepository.getTables();
@@ -18,7 +19,18 @@ public class OutputView {
 		final int size = tables.size();
 		printLine(TOP_LINE, size);
 		printTableNumbers(tables);
-		printLine(BOTTOM_LINE, size);
+		printBottom(tables);
+		System.out.println();
+	}
+
+	private static void printBottom(List<Table> tables) {
+		for (Table table : tables) {
+			if (table.isNotOrdered()) {
+				System.out.print(BOTTOM_LINE);
+				continue;
+			}
+			System.out.print(BOTTOM_LINE_WITH_ORDER);
+		}
 	}
 
 	private static void printLine(final String line, final int count) {

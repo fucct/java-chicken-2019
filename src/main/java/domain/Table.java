@@ -33,4 +33,8 @@ public class Table {
 	public void init() {
 		order.initOrder();
 	}
+
+	public boolean isNotOrdered() {
+		return order.isNotOrdered();
+	}
 }
