@@ -11,7 +11,7 @@ public class Order {
 	private final Map<Menu, Integer> order = new HashMap<>();
 
 	public Order() {
-		for (Menu menu : Menus.getMenus()) {
+		for (Menu menu : MenuRepository.getMenus()) {
 			order.put(menu, INIT);
 		}
 	}

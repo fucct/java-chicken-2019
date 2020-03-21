@@ -4,29 +4,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class MenuId {
-	public static final int MENU_COUNT = 11;
+public class TableId {
+	public static final int TABLE_COUNT = 8;
 
-	private static final Map<Integer, MenuId> menuId = new HashMap<>();
+	private static final Map<Integer, TableId> tableId = new HashMap<>();
 	private final int id;
 
 	static {
-		for (int i = 1; i <= MENU_COUNT; i++) {
-			menuId.put(i, new MenuId(String.valueOf(i)));
+		for (int i = 1; i <= TABLE_COUNT; i++) {
+			tableId.put(i, new TableId(String.valueOf(i)));
 		}
 	}
 
-	private MenuId(String id) {
+	private TableId(String id) {
 		this.id = stringToInt(id);
 	}
 
-	public static MenuId of(String id) {
+	public static TableId of(String id) {
 		containKey(id);
-		return menuId.get(stringToInt(id));
+		return tableId.get(stringToInt(id));
 	}
 
 	private static void containKey(String id) {
-		if (menuId.containsKey(menuId.get(stringToInt(id)))) {
+		if (tableId.containsKey(tableId.get(stringToInt(id)))) {
 			throw new IllegalArgumentException("잘못된 아이디입니다.");
 		}
 	}
@@ -53,8 +53,8 @@ public class MenuId {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		MenuId menuId = (MenuId)o;
-		return id == menuId.id;
+		TableId tableId = (TableId)o;
+		return id == tableId.id;
 	}
 
 	@Override
