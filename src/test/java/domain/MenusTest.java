@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class MenusTest {
 	@Test
@@ -20,7 +22,7 @@ class MenusTest {
 	@DisplayName("생성된 전체 메뉴는 추가가 불가능하다.")
 	void unmodifiableAddTest() {
 		List<Menu> menus = Menus.getMenus();
-		assertThatThrownBy(() -> menus.add(new Menu(12, "new Chicken", MenuType.CHICKEN, 10000)))
+		assertThatThrownBy(() -> menus.add(new Menu(MenuId.of("10"), "new Chicken", MenuType.CHICKEN, 10000)))
 			.isInstanceOf(UnsupportedOperationException.class);
 	}
 
@@ -29,5 +31,22 @@ class MenusTest {
 	void sizeTest() {
 		List<Menu> menus = Menus.getMenus();
 		assertThat(menus).hasSize(11);
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"1", "11"})
+	@DisplayName("입력된 아이디에 대응되는 객체가 정상반환된다.")
+	void findMenuByIdTest(String input) {
+		Menu menuById = Menus.findMenuById(input);
+		assertThat(menuById).isInstanceOf(Menu.class);
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"12", "13"})
+	@DisplayName("범위를 초과하여 예외가 발생한다.")
+	void findByIdOverRange(String input) {
+		assertThatThrownBy(() -> {
+			Menus.findMenuById(input);
+		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
